@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Flight</title>
+</head>
+<body>
+
+<h3>Ubah Pilot detail</h3>
+
+<form th:action="@{/pilot/edit}" th:object="${pilot}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    License Number : <br>
+    <input type="text" th:field="*{licenseNumber}" name="licenseNumber" readonly/> <br>
+    Name: <br>
+    <input type="text" th:field="*{name}" name="name"/> <br>
+    Fly Hour : <br>
+    <input type="number" th:field="*{flyHour}" name="flyHour"/> <br><br>
+    <br>
+    <button type="submit">Submit</button>
+</form>
+
+</body>
+</html>

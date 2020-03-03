@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+<head>
+    <title>Flight</title>
+</head>
+<body>
+    <h3>Hapus Flight?</h3>
+
+    <form class="form-horizontal" th:action="@{/flight/delete}"  th:object="${flight}" method="post">
+        <input type="hidden" th:field="*{pilot}"/>
+        <input type="hidden" th:field="*{id}" />
+
+        Flight Number : <br>
+        <input type="text" th:field="*{flightNumber}"  name="flightNumber" readonly/> <br>
+        Origin: <br>
+        <input type="text" th:field="*{origin}"  name="origin" readonly/> <br>
+        Destination : <br>
+        <input type="text" th:field="*{destination}"  name="destination" readonly/> <br>
+        Time : <br>
+        <input type="date" th:field="*{time}"  name="time" readonly/> <br><br>
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+</html>

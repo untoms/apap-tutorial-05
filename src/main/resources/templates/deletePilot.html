@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Pilot</title>
+</head>
+<body>
+
+<h3>Hapus Pilot?</h3>
+
+<form th:action="@{/pilot/delete}" th:object="${pilot}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    License Number : <br>
+    <input type="text" th:field="*{licenseNumber}" name="licenseNumber" readonly/> <br>
+    Name: <br>
+    <input type="text" th:field="*{name}" name="name" readonly/> <br>
+    Fly Hour : <br>
+    <input type="number" th:field="*{flyHour}" name="flyHour" readonly/> <br><br>
+    <br>
+    <button type="submit">Submit</button>
+</form>
+
+</body>
+</html>

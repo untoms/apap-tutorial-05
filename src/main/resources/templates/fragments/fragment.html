@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Home</title>
+        <head th:fragment="css">
+            <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+        </head>
+        <head th:fragment="js">
+            <script rel="stylesheet" th:href="@{/js/bootstrap.min.js}"></script>
+        </head>
+    </head>
+    <body>
+        <nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-barnd" href="#"><span th:text="${title}">APAP</span></a>
+            <div class="collapse navbar-collapse" id="navbarSupportContent">
+                <!--<li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>-->
+            </div>
+        </nav>
+    </body>
+</html>

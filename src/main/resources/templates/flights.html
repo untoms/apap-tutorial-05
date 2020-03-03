@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+    <title>Tambah Penerbangan</title>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar">
+</nav>
+
+<div class="container-fluid">
+    <h1 class="page-header">Tambah Penerbangan</h1>
+
+    <form id="myform" class="form-horizontal" method="post" th:action="@{/flights}" th:object="${pilot}">
+        <input type="hidden" th:field="*{id}"/>
+        <input type="hidden" th:field="*{licenseNumber}"/>
+        <input type="hidden" th:field="*{name}"/>
+        <input type="hidden" th:field="*{flyHour}"/>
+        <fieldset>
+
+            <div class="table-responsive">
+                <label>Rows</label>
+                <table class="table table-condensed table-striped table-bordered">
+                    <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Flight Number</th>
+                        <th>Origin</th>
+                        <th>Destinantion</th>
+                        <th>Time</th>
+                        <th>
+                            <button formnovalidate="formnovalidate" type="submit" id="addRow" name="addRow" class = "btn btn-primary btn-xs">
+                                Tambah &nbsp;
+                            </button>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="flight,fStat : *{pilotFlight}">
+                        <input type="hidden" th:field="*{pilotFlight[__${fStat.index}__].id}"/>
+                        <td th:text="${fStat.count}">1</td>
+
+                        <td>
+                            <input type="text" th:field="*{pilotFlight[__${fStat.index}__].flightNumber}" class="form-control" placeholder="Flight Number" th:errorclass="fieldError" required="required"/>
+                        </td>
+                        <td>
+                            <input type="text" th:field="*{pilotFlight[__${fStat.index}__].origin}" class="form-control" placeholder="Origin" th:errorclass="fieldError"/>
+                        </td>
+                        <td>
+                            <input type="text" th:field="*{pilotFlight[__${fStat.index}__].destination}" class="form-control" placeholder="Destination" th:errorclass="fieldError"/>
+                        </td>
+                        <td>
+                            <input type="text" th:field="*{pilotFlight[__${fStat.index}__].time}" class="form-control" placeholder="yyyy-mm-dd" th:errorclass="fieldError" required="required"/>
+                        </td>
+                        <td>
+                            <button formnovalidate="formnovalidate" type="submit" id="removeRow" name="removeRow" th:value="${fStat.index}" class = "btn btn-danger btn-xs">
+                                Hapus &nbsp;
+                                <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <button type="submit" name="save" class = "btn btn-success">
+                Simpan &nbsp;
+                <span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span>
+            </button>
+
+        </fieldset>
+
+    </form>
+</div>
+
+
+
+</body>
+</html>
